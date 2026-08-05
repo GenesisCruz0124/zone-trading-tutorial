@@ -2,13 +2,14 @@ import type { ReactNode } from 'react'
 import TutorialImage from './TutorialImage'
 
 interface ExampleWalkthroughProps {
+  id: string
   label: string
   direction: 'Long' | 'Short'
   description: ReactNode
   imageCaption: string
 }
 
-export default function ExampleWalkthrough({ label, direction, description, imageCaption }: ExampleWalkthroughProps) {
+export default function ExampleWalkthrough({ id, label, direction, description, imageCaption }: ExampleWalkthroughProps) {
   const isLong = direction === 'Long'
   return (
     <div className="rounded-lg border border-tv-border bg-tv-panel p-5">
@@ -24,7 +25,7 @@ export default function ExampleWalkthrough({ label, direction, description, imag
       </div>
       <div className="mt-3 text-sm leading-relaxed text-slate-300">{description}</div>
       <p className="mt-3 text-xs italic text-slate-500">Halimbawa lang ito — hindi ito recommendation na mag-trade.</p>
-      <TutorialImage caption={imageCaption} />
+      <TutorialImage id={id} caption={imageCaption} />
     </div>
   )
 }
