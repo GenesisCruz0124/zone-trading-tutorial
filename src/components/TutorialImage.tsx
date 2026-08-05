@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { clearStoredImage, isImageFile, loadStoredImage, resizeImageToDataUrl, saveStoredImage } from '../lib/imageUpload'
+import { useSettings } from '../context/SettingsContext'
+import { getContent } from '../i18n/content'
 
 interface TutorialImageProps {
   id: string
@@ -12,6 +14,8 @@ export default function TutorialImage({ id, caption, aspect = 'video' }: Tutoria
   const [isDragging, setIsDragging] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+  const { language } = useSettings()
+  const { imagePlaceholder } = getContent(language)
 
   useEffect(() => {
     setImageUrl(loadStoredImage(id))
@@ -20,7 +24,7 @@ export default function TutorialImage({ id, caption, aspect = 'video' }: Tutoria
   async function handleFile(file: File | undefined | null) {
     if (!file) return
     if (!isImageFile(file)) {
-      setError('File na ito ay hindi image. Mag-upload ng PNG, JPG, o WebP.')
+      setError(imagePlaceholder.unsupportedFileError)
       return
     }
     setError(null)
@@ -29,10 +33,10 @@ export default function TutorialImage({ id, caption, aspect = 'video' }: Tutoria
       const saved = saveStoredImage(id, dataUrl)
       setImageUrl(dataUrl)
       if (!saved) {
-        setError('Na-preview ang image pero hindi na-save locally (storage full). Mawawala ito pag nag-refresh.')
+        setError(imagePlaceholder.quotaWarning)
       }
     } catch {
-      setError('Hindi na-process ang image. Subukan ulit ng ibang file.')
+      setError(imagePlaceholder.processError)
     }
   }
 
@@ -87,20 +91,20 @@ export default function TutorialImage({ id, caption, aspect = 'video' }: Tutoria
             <button
               type="button"
               onClick={handleRemove}
-              className="absolute right-2 top-2 rounded bg-tv-bg/80 px-2 py-1 text-xs text-slate-300 opacity-0 transition-opacity hover:text-rose-300 group-hover:opacity-100"
+              className="absolute right-2 top-2 rounded bg-tv-bg/80 px-2 py-1 text-xs text-fg-muted opacity-0 transition-opacity hover:text-danger-fg group-hover:opacity-100"
             >
-              Alisin
+              {imagePlaceholder.removeLabel}
             </button>
           </>
         ) : (
-          <div className="pointer-events-none text-center text-slate-500">
+          <div className="pointer-events-none text-center text-fg-subtle">
             <p className="text-2xl">🖼️</p>
-            <p className="mt-1 text-xs">I-drag o i-click para mag-upload ng screenshot mo</p>
+            <p className="mt-1 text-xs">{imagePlaceholder.prompt}</p>
           </div>
         )}
       </div>
-      <figcaption className="mt-2 text-sm text-slate-400">{caption}</figcaption>
-      {error && <p className="mt-1 text-xs text-amber-300">{error}</p>}
+      <figcaption className="mt-2 text-sm text-fg-muted">{caption}</figcaption>
+      {error && <p className="mt-1 text-xs text-warn-fg">{error}</p>}
     </figure>
   )
 }

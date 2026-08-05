@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import TradingViewWidget from './TradingViewWidget'
 import SymbolSwitcher from './SymbolSwitcher'
+import { useSettings } from '../context/SettingsContext'
+import { getContent } from '../i18n/content'
 
 const DEFAULT_SYMBOL = 'BYBIT:SQDUSDT.P'
 const DEFAULT_INTERVAL = '15'
@@ -8,14 +10,14 @@ const DEFAULT_INTERVAL = '15'
 export default function ChartPanel() {
   const [symbol, setSymbol] = useState(DEFAULT_SYMBOL)
   const [interval, setInterval] = useState(DEFAULT_INTERVAL)
+  const { language } = useSettings()
+  const { chart } = getContent(language)
 
   return (
     <section id="live-chart" className="scroll-mt-24 border-b border-tv-border px-4 py-10 sm:px-8">
       <div className="mx-auto max-w-5xl">
-        <h2 className="text-xl font-semibold text-slate-50 sm:text-2xl">Live Chart Panel</h2>
-        <p className="mt-2 text-sm text-slate-400 sm:text-base">
-          Practice reading structure dito habang binabasa yung guide sa baba.
-        </p>
+        <h2 className="text-xl font-semibold text-fg sm:text-2xl">{chart.title}</h2>
+        <p className="mt-2 text-sm text-fg-muted sm:text-base">{chart.caption}</p>
 
         <div className="mt-5 overflow-hidden rounded-lg border border-tv-border">
           <SymbolSwitcher

@@ -6,6 +6,39 @@ html {
   scroll-behavior: smooth;
 }
 
+:root,
+html[data-theme='dark'] {
+  --bg: #0f1420;
+  --panel: #161b27;
+  --border: #242938;
+  --fg: #f1f5f9;
+  --fg-muted: #cbd5e1;
+  --fg-subtle: #8496b0;
+  --teal: #26a69a;
+  --blue: #4c8dff;
+  --warn-bg: rgba(245, 158, 11, 0.1);
+  --warn-border: rgba(245, 158, 11, 0.4);
+  --warn-fg: #fcd34d;
+  --danger-bg: rgba(244, 63, 94, 0.2);
+  --danger-fg: #fda4af;
+}
+
+html[data-theme='light'] {
+  --bg: #f8fafc;
+  --panel: #ffffff;
+  --border: #dde3ec;
+  --fg: #0f172a;
+  --fg-muted: #3f4b5e;
+  --fg-subtle: #64748b;
+  --teal: #0d8a7e;
+  --blue: #2154d9;
+  --warn-bg: #fef3c7;
+  --warn-border: #f59e0b;
+  --warn-fg: #92400e;
+  --danger-bg: #fee2e2;
+  --danger-fg: #b91c1c;
+}
+
 body {
-  @apply bg-tv-bg text-slate-200;
+  @apply bg-tv-bg text-fg;
 }
