@@ -1,31 +1,33 @@
-import type { ReactNode } from 'react'
 import TutorialImage from './TutorialImage'
+import { useSettings } from '../context/SettingsContext'
+import { getContent } from '../i18n/content'
 
 interface ExampleWalkthroughProps {
   id: string
-  label: string
-  direction: 'Long' | 'Short'
-  description: ReactNode
-  imageCaption: string
+  variant: 'long' | 'short'
 }
 
-export default function ExampleWalkthrough({ id, label, direction, description, imageCaption }: ExampleWalkthroughProps) {
-  const isLong = direction === 'Long'
+export default function ExampleWalkthrough({ id, variant }: ExampleWalkthroughProps) {
+  const { language } = useSettings()
+  const { examples } = getContent(language)
+  const example = variant === 'long' ? examples.long : examples.short
+  const direction = variant === 'long' ? 'Long' : 'Short'
+
   return (
     <div className="rounded-lg border border-tv-border bg-tv-panel p-5">
       <div className="flex items-center gap-2">
         <span
           className={`rounded px-2 py-0.5 text-xs font-semibold uppercase ${
-            isLong ? 'bg-tv-teal/20 text-tv-teal' : 'bg-rose-500/20 text-rose-300'
+            variant === 'long' ? 'bg-tv-teal/20 text-tv-teal' : 'bg-danger-bg text-danger-fg'
           }`}
         >
           {direction}
         </span>
-        <h3 className="font-semibold text-slate-100">{label}</h3>
+        <h3 className="font-semibold text-fg">{example.label}</h3>
       </div>
-      <div className="mt-3 text-sm leading-relaxed text-slate-300">{description}</div>
-      <p className="mt-3 text-xs italic text-slate-500">Halimbawa lang ito — hindi ito recommendation na mag-trade.</p>
-      <TutorialImage id={id} caption={imageCaption} />
+      <div className="mt-3 text-sm leading-relaxed text-fg-muted">{example.description}</div>
+      <p className="mt-3 text-xs italic text-fg-subtle">{examples.disclaimerNote}</p>
+      <TutorialImage id={id} caption={example.imageCaption} />
     </div>
   )
 }

@@ -1,3 +1,6 @@
+import { useSettings } from '../context/SettingsContext'
+import { getContent } from '../i18n/content'
+
 interface SymbolSwitcherProps {
   symbol: string
   interval: string
@@ -20,11 +23,14 @@ export default function SymbolSwitcher({
   onSymbolChange,
   onIntervalChange,
 }: SymbolSwitcherProps) {
+  const { language } = useSettings()
+  const { chart } = getContent(language)
+
   return (
     <div className="flex flex-wrap items-center gap-3 rounded-t-lg border border-tv-border bg-tv-panel px-4 py-3">
       <div className="flex items-center gap-2">
-        <label htmlFor="symbol-input" className="text-xs uppercase tracking-wide text-slate-400">
-          Symbol
+        <label htmlFor="symbol-input" className="text-xs uppercase tracking-wide text-fg-muted">
+          {chart.symbolLabel}
         </label>
         <input
           id="symbol-input"
@@ -37,19 +43,19 @@ export default function SymbolSwitcher({
           }}
           onBlur={(e) => onSymbolChange(e.target.value.trim().toUpperCase())}
           placeholder="BYBIT:SQDUSDT.P"
-          className="w-44 rounded border border-tv-border bg-tv-bg px-2 py-1 text-sm text-slate-100 focus:border-tv-teal focus:outline-none"
+          className="w-44 rounded border border-tv-border bg-tv-bg px-2 py-1 text-sm text-fg focus:border-tv-teal focus:outline-none"
         />
       </div>
 
       <div className="flex items-center gap-2">
-        <label htmlFor="interval-select" className="text-xs uppercase tracking-wide text-slate-400">
-          Interval
+        <label htmlFor="interval-select" className="text-xs uppercase tracking-wide text-fg-muted">
+          {chart.intervalLabel}
         </label>
         <select
           id="interval-select"
           value={interval}
           onChange={(e) => onIntervalChange(e.target.value)}
-          className="rounded border border-tv-border bg-tv-bg px-2 py-1 text-sm text-slate-100 focus:border-tv-teal focus:outline-none"
+          className="rounded border border-tv-border bg-tv-bg px-2 py-1 text-sm text-fg focus:border-tv-teal focus:outline-none"
         >
           {INTERVALS.map((opt) => (
             <option key={opt.value} value={opt.value}>
@@ -59,7 +65,7 @@ export default function SymbolSwitcher({
         </select>
       </div>
 
-      <span className="ml-auto text-xs text-slate-500">Live via TradingView</span>
+      <span className="ml-auto text-xs text-fg-subtle">{chart.liveBadge}</span>
     </div>
   )
 }
