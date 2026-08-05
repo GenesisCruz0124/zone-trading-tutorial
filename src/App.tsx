@@ -56,7 +56,7 @@ function App() {
           'I-adjust ang period settings kung gusto mong i-tweak ang sensitivity.',
         ]}
       >
-        <TutorialImage caption="Screenshot slot: Indicators search dialog na may Fractals result." />
+        <TutorialImage id="fractals-indicator" caption="Screenshot slot: Indicators search dialog na may Fractals result." />
       </StepSection>
 
       <StepSection
@@ -78,7 +78,7 @@ function App() {
         ]}
         note="Note: hindi sapat ang break lang para maging confirmation — dapat i-pair ito sa zone (susunod na section)."
       >
-        <TutorialImage caption="Screenshot slot: Trendline na naka-draw gamit ang fractal swing points." />
+        <TutorialImage id="trendline-break" caption="Screenshot slot: Trendline na naka-draw gamit ang fractal swing points." />
       </StepSection>
 
       <StepSection
@@ -98,8 +98,8 @@ function App() {
           'I-adjust ang taas ng box para ma-cover ang buong reaction area, hindi lang single wick.',
         ]}
       >
-        <TutorialImage caption="Screenshot slot: Rectangle zone box sa paligid ng consolidation area (long setup)." />
-        <TutorialImage caption="Screenshot slot: Rectangle zone box para sa short/reversal setup." />
+        <TutorialImage id="entry-zone-long" caption="Screenshot slot: Rectangle zone box sa paligid ng consolidation area (long setup)." />
+        <TutorialImage id="entry-zone-short" caption="Screenshot slot: Rectangle zone box para sa short/reversal setup." />
       </StepSection>
 
       <StepSection
@@ -120,7 +120,7 @@ function App() {
         ]}
         note="Mahalaga: ang lapad ng zone ay dapat base sa volatility/ATR ng symbol — hindi basta-basta lang o arbitrary."
       >
-        <TutorialImage caption="Screenshot slot: Color-coded invalidation (red/pink) at take-profit (teal/green) zones." />
+        <TutorialImage id="invalidation-tp" caption="Screenshot slot: Color-coded invalidation (red/pink) at take-profit (teal/green) zones." />
       </StepSection>
 
       <section id="worked-examples" className="scroll-mt-24 border-b border-tv-border px-4 py-10 sm:px-8">
@@ -134,6 +134,7 @@ function App() {
 
           <div className="mt-6 grid gap-5 sm:grid-cols-2">
             <ExampleWalkthrough
+              id="example-long"
               label="Uptrend Continuation"
               direction="Long"
               description={
@@ -147,6 +148,7 @@ function App() {
               imageCaption="Screenshot slot: Long setup — trendline break, entry zone, invalidation below, target above."
             />
             <ExampleWalkthrough
+              id="example-short"
               label="Supply Zone Reaction"
               direction="Short"
               description={
