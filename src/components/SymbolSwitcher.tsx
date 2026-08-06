@@ -42,7 +42,7 @@ export default function SymbolSwitcher({
             }
           }}
           onBlur={(e) => onSymbolChange(e.target.value.trim().toUpperCase())}
-          placeholder="BYBIT:SQDUSDT.P"
+          placeholder="OANDA:XAUUSD"
           className="w-44 rounded border border-tv-border bg-tv-bg px-2 py-1 text-sm text-fg focus:border-tv-teal focus:outline-none"
         />
       </div>

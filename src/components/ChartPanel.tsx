@@ -4,7 +4,7 @@ import SymbolSwitcher from './SymbolSwitcher'
 import { useSettings } from '../context/SettingsContext'
 import { getContent } from '../i18n/content'
 
-const DEFAULT_SYMBOL = 'BYBIT:SQDUSDT.P'
+const DEFAULT_SYMBOL = 'OANDA:XAUUSD'
 const DEFAULT_INTERVAL = '15'
 
 export default function ChartPanel() {
