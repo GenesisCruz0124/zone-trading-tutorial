@@ -4,6 +4,7 @@ import StepSection from './components/StepSection'
 import TutorialImage from './components/TutorialImage'
 import ExampleWalkthrough from './components/ExampleWalkthrough'
 import RiskManagementSection from './components/RiskManagementSection'
+import CourseCurriculum from './components/CourseCurriculum'
 import Footer from './components/Footer'
 import SettingsToggle from './components/SettingsToggle'
 import { useSettings } from './context/SettingsContext'
@@ -33,6 +34,8 @@ function App() {
       </nav>
 
       <HeroBanner />
+
+      <CourseCurriculum />
 
       <ChartPanel />
 
