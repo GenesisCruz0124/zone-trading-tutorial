@@ -2,10 +2,20 @@ import type { ReactNode } from 'react'
 import { useSettings } from '../context/SettingsContext'
 import { getContent } from '../i18n/content'
 
+type StepKey = 'fractals' | 'trendline' | 'entryZone' | 'invalidationTp' | 'weeklyOutlook'
+
 interface StepSectionProps {
   id: string
-  stepKey: 'fractals' | 'trendline' | 'entryZone' | 'invalidationTp' | 'weeklyOutlook'
+  stepKey: StepKey
   children?: ReactNode
+}
+
+const STEP_ICONS: Record<StepKey, string> = {
+  fractals: '🔺',
+  trendline: '📈',
+  entryZone: '🔲',
+  invalidationTp: '🎯',
+  weeklyOutlook: '🗺️',
 }
 
 export default function StepSection({ id, stepKey, children }: StepSectionProps) {
@@ -16,6 +26,12 @@ export default function StepSection({ id, stepKey, children }: StepSectionProps)
     <section id={id} className="scroll-mt-24 border-b border-tv-border px-4 py-10 sm:px-8">
       <div className="mx-auto max-w-5xl">
         <div className="flex items-center gap-3">
+          <span
+            aria-hidden="true"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-tv-panel text-xl"
+          >
+            {STEP_ICONS[stepKey]}
+          </span>
           <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-tv-teal/20 text-sm font-bold text-tv-teal">
             {step.stepNumber}
           </span>

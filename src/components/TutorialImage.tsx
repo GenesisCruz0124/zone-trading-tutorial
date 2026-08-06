@@ -1,5 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
-import { clearStoredImage, isImageFile, loadStoredImage, resizeImageToDataUrl, saveStoredImage } from '../lib/imageUpload'
+import {
+  analyzeImageQuality,
+  clearStoredImage,
+  isImageFile,
+  loadStoredImage,
+  resizeImageToDataUrl,
+  saveStoredImage,
+} from '../lib/imageUpload'
 import { useSettings } from '../context/SettingsContext'
 import { getContent } from '../i18n/content'
 
@@ -9,16 +16,25 @@ interface TutorialImageProps {
   aspect?: 'video' | 'square'
 }
 
+type CheckState =
+  | { status: 'idle' }
+  | { status: 'checking' }
+  | { status: 'ok' }
+  | { status: 'warning'; messages: string[] }
+  | { status: 'failed' }
+
 export default function TutorialImage({ id, caption, aspect = 'video' }: TutorialImageProps) {
   const [imageUrl, setImageUrl] = useState<string | null>(null)
   const [isDragging, setIsDragging] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [checkState, setCheckState] = useState<CheckState>({ status: 'idle' })
   const inputRef = useRef<HTMLInputElement>(null)
   const { language } = useSettings()
   const { imagePlaceholder } = getContent(language)
 
   useEffect(() => {
     setImageUrl(loadStoredImage(id))
+    setCheckState({ status: 'idle' })
   }, [id])
 
   async function handleFile(file: File | undefined | null) {
@@ -28,6 +44,7 @@ export default function TutorialImage({ id, caption, aspect = 'video' }: Tutoria
       return
     }
     setError(null)
+    setCheckState({ status: 'idle' })
     try {
       const dataUrl = await resizeImageToDataUrl(file)
       const saved = saveStoredImage(id, dataUrl)
@@ -45,7 +62,23 @@ export default function TutorialImage({ id, caption, aspect = 'video' }: Tutoria
     clearStoredImage(id)
     setImageUrl(null)
     setError(null)
+    setCheckState({ status: 'idle' })
     if (inputRef.current) inputRef.current.value = ''
+  }
+
+  async function handleCheck(e: React.MouseEvent) {
+    e.stopPropagation()
+    if (!imageUrl) return
+    setCheckState({ status: 'checking' })
+    try {
+      const result = await analyzeImageQuality(imageUrl)
+      const messages: string[] = []
+      if (result.tooSmall) messages.push(imagePlaceholder.checkTooSmall)
+      if (result.likelyBlank) messages.push(imagePlaceholder.checkLikelyBlank)
+      setCheckState(messages.length > 0 ? { status: 'warning', messages } : { status: 'ok' })
+    } catch {
+      setCheckState({ status: 'failed' })
+    }
   }
 
   return (
@@ -105,6 +138,35 @@ export default function TutorialImage({ id, caption, aspect = 'video' }: Tutoria
       </div>
       <figcaption className="mt-2 text-sm text-fg-muted">{caption}</figcaption>
       {error && <p className="mt-1 text-xs text-warn-fg">{error}</p>}
+
+      {imageUrl && (
+        <div className="mt-2">
+          <button
+            type="button"
+            onClick={handleCheck}
+            disabled={checkState.status === 'checking'}
+            className="rounded border border-tv-border px-3 py-1.5 text-xs text-fg-muted transition-colors hover:border-tv-teal/60 hover:text-tv-teal disabled:opacity-60"
+          >
+            {checkState.status === 'checking' ? imagePlaceholder.checkingLabel : imagePlaceholder.checkButtonLabel}
+          </button>
+
+          {checkState.status === 'ok' && (
+            <p className="mt-2 text-xs text-tv-teal">✓ {imagePlaceholder.checkOk}</p>
+          )}
+          {checkState.status === 'warning' && (
+            <ul className="mt-2 space-y-1">
+              {checkState.messages.map((msg, idx) => (
+                <li key={idx} className="text-xs text-warn-fg">
+                  ⚠ {msg}
+                </li>
+              ))}
+            </ul>
+          )}
+          {checkState.status === 'failed' && (
+            <p className="mt-2 text-xs text-danger-fg">{imagePlaceholder.checkFailed}</p>
+          )}
+        </div>
+      )}
     </figure>
   )
 }
