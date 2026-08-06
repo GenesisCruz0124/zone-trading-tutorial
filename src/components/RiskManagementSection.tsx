@@ -11,7 +11,7 @@ export default function RiskManagementSection() {
       <div className="mx-auto max-w-5xl">
         <div className="flex items-center gap-3">
           <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-tv-teal/20 text-sm font-bold text-tv-teal">
-            8
+            7
           </span>
           <h2 className="text-xl font-semibold text-fg sm:text-2xl">{risk.heading}</h2>
         </div>
