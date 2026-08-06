@@ -44,6 +44,7 @@ export interface SiteContent {
     trendline: StepContent
     entryZone: StepContent
     invalidationTp: StepContent
+    weeklyOutlook: StepContent
   }
   examples: {
     heading: string
@@ -75,6 +76,7 @@ const taglish: SiteContent = {
     { id: 'step-trendline', label: '2. Trendline' },
     { id: 'step-entry-zone', label: '3. Entry Zone' },
     { id: 'step-invalidation-tp', label: '4. Invalid/TP' },
+    { id: 'step-weekly-outlook', label: '5. Weekly Outlook' },
     { id: 'worked-examples', label: 'Examples' },
     { id: 'risk-management', label: 'Risk Mgmt' },
   ],
@@ -178,6 +180,30 @@ const taglish: SiteContent = {
       ],
       note: 'Mahalaga: ang lapad ng zone ay dapat base sa volatility/ATR ng symbol — hindi basta-basta lang o arbitrary.',
       imageCaptions: ['Screenshot slot: Color-coded invalidation (red/pink) at take-profit (teal/green) zones.'],
+    },
+    weeklyOutlook: {
+      stepNumber: '5',
+      title: 'Build a Weekly Outlook Zone Chart',
+      intro: (
+        <>
+          Pagsamahin ang lahat ng natutunan mo — zones, bias, at scenarios — sa isang chart na pwede mong i-save o
+          i-share bilang <strong>weekly outlook</strong>. Walang bagong indicator dito, purely drawing tools at
+          annotation na naka-layer sa itaas ng structure na na-identify mo na.
+        </>
+      ),
+      steps: [
+        'I-mark ang hanggang dalawang supply zones (Rectangle tool) sa itaas ng current price, parehong technique sa Step 3.',
+        'I-mark ang demand zone (Rectangle tool, ibang kulay — hal. blue/teal) sa ibaba, para di malito sa supply zones.',
+        'Mag-add ng Horizontal Line sa kasalukuyang price para makita agad kung saan ito relative sa mga zone.',
+        'Gamitin ang Arrow tool para i-sketch ang dalawang posibleng landas: bullish scenario (break pataas sa supply) at pullback scenario (rejection pababa papunta sa demand) — magkaibang kulay bawat isa.',
+        'Mag-add ng Text annotation sa isang sulok na naglalagay ng bias summary sa iba’t ibang timeframe (hal. "H4 Bearish, H1 Bearish").',
+        'I-label ang bawat key level gamit ang Text o Price Label tool (Supply 2, Supply 1, Demand, Current Price) para mabilis mabasa.',
+        'Kapag kumpleto na, gamitin ang camera/snapshot icon sa toolbar para i-save o i-share ang outlook chart mo.',
+      ],
+      note: 'Ito ay presentation lang ng parehong zones at bias na na-draw mo na sa mga naunang steps — hindi ito bagong technique.',
+      imageCaptions: [
+        'Screenshot slot: Kumpletong weekly outlook chart na may supply/demand zones, bias label, at scenario arrows.',
+      ],
     },
   },
   examples: {
@@ -342,6 +368,30 @@ const english: SiteContent = {
       ],
       note: "Important: zone width should be based on the symbol's volatility/ATR — not arbitrary.",
       imageCaptions: ['Screenshot slot: Color-coded invalidation (red/pink) and take-profit (teal/green) zones.'],
+    },
+    weeklyOutlook: {
+      stepNumber: '5',
+      title: 'Build a Weekly Outlook Zone Chart',
+      intro: (
+        <>
+          Bring together everything you've learned — zones, bias, and scenarios — into one chart you can save or
+          share as a <strong>weekly outlook</strong>. No new indicator here, just drawing tools and annotations
+          layered on top of the structure you've already identified.
+        </>
+      ),
+      steps: [
+        'Mark up to two supply zones (Rectangle tool) above the current price, same technique as Step 3.',
+        'Mark the demand zone (Rectangle tool, a different color — e.g. blue/teal) below, so it isn\'t confused with supply zones.',
+        'Add a Horizontal Line at the current price so you can immediately see where it sits relative to the zones.',
+        'Use the Arrow tool to sketch the two possible paths: the bullish scenario (break upward through supply) and the pullback scenario (rejection down toward demand) — a different color for each.',
+        'Add a Text annotation in a corner summarizing bias across timeframes (e.g. "H4 Bearish, H1 Bearish").',
+        'Label each key level with the Text or Price Label tool (Supply 2, Supply 1, Demand, Current Price) so it reads quickly.',
+        'Once it\'s complete, use the camera/snapshot icon in the toolbar to save or share your outlook chart.',
+      ],
+      note: "This is just a presentation of the same zones and bias you already drew in the earlier steps — it isn't a new technique.",
+      imageCaptions: [
+        'Screenshot slot: Completed weekly outlook chart with supply/demand zones, bias label, and scenario arrows.',
+      ],
     },
   },
   examples: {

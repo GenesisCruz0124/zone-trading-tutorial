@@ -4,7 +4,7 @@ import { getContent } from '../i18n/content'
 
 interface StepSectionProps {
   id: string
-  stepKey: 'fractals' | 'trendline' | 'entryZone' | 'invalidationTp'
+  stepKey: 'fractals' | 'trendline' | 'entryZone' | 'invalidationTp' | 'weeklyOutlook'
   children?: ReactNode
 }
 

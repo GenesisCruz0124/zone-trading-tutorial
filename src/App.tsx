@@ -53,11 +53,15 @@ function App() {
         <TutorialImage id="invalidation-tp" caption={getContent(language).steps.invalidationTp.imageCaptions[0]} />
       </StepSection>
 
+      <StepSection id="step-weekly-outlook" stepKey="weeklyOutlook">
+        <TutorialImage id="weekly-outlook-setup" caption={getContent(language).steps.weeklyOutlook.imageCaptions[0]} />
+      </StepSection>
+
       <section id="worked-examples" className="scroll-mt-24 border-b border-tv-border px-4 py-10 sm:px-8">
         <div className="mx-auto max-w-5xl">
           <div className="flex items-center gap-3">
             <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-tv-teal/20 text-sm font-bold text-tv-teal">
-              7
+              6
             </span>
             <h2 className="text-xl font-semibold text-fg sm:text-2xl">{examples.heading}</h2>
           </div>
