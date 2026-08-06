@@ -1,13 +1,11 @@
-import TutorialImage from './TutorialImage'
 import { useSettings } from '../context/SettingsContext'
 import { getContent } from '../i18n/content'
 
 interface ExampleWalkthroughProps {
-  id: string
   variant: 'long' | 'short'
 }
 
-export default function ExampleWalkthrough({ id, variant }: ExampleWalkthroughProps) {
+export default function ExampleWalkthrough({ variant }: ExampleWalkthroughProps) {
   const { language } = useSettings()
   const { examples } = getContent(language)
   const example = variant === 'long' ? examples.long : examples.short
@@ -27,7 +25,6 @@ export default function ExampleWalkthrough({ id, variant }: ExampleWalkthroughPr
       </div>
       <div className="mt-3 text-sm leading-relaxed text-fg-muted">{example.description}</div>
       <p className="mt-3 text-xs italic text-fg-subtle">{examples.disclaimerNote}</p>
-      <TutorialImage id={id} caption={example.imageCaption} />
     </div>
   )
 }

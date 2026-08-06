@@ -12,13 +12,11 @@ interface StepContent {
   intro: ReactNode
   steps: string[]
   note?: string
-  imageCaptions: string[]
 }
 
 interface ExampleContent {
   label: string
   description: ReactNode
-  imageCaption: string
 }
 
 export interface SiteContent {
@@ -61,19 +59,6 @@ export interface SiteContent {
   }
   footer: string
   sampleDiagramLabel: string
-  imagePlaceholder: {
-    prompt: string
-    removeLabel: string
-    unsupportedFileError: string
-    processError: string
-    quotaWarning: string
-    checkButtonLabel: string
-    checkingLabel: string
-    checkOk: string
-    checkTooSmall: string
-    checkLikelyBlank: string
-    checkFailed: string
-  }
 }
 
 const taglish: SiteContent = {
@@ -129,7 +114,6 @@ const taglish: SiteContent = {
         'I-add sa chart.',
         'I-adjust ang period settings kung gusto mong i-tweak ang sensitivity.',
       ],
-      imageCaptions: ['Screenshot slot: Indicators search dialog na may Fractals result.'],
     },
     trendline: {
       stepNumber: '2',
@@ -148,7 +132,6 @@ const taglish: SiteContent = {
         'Bantayan kung may candle close na dumaan/tumawid sa linya — iyan ang potential break.',
       ],
       note: 'Note: hindi sapat ang break lang para maging confirmation — dapat i-pair ito sa zone (susunod na section).',
-      imageCaptions: ['Screenshot slot: Trendline na naka-draw gamit ang fractal swing points.'],
     },
     entryZone: {
       stepNumber: '3',
@@ -164,10 +147,6 @@ const taglish: SiteContent = {
         'Piliin ang Rectangle tool sa drawing toolbar.',
         'I-draw ang box sa paligid ng consolidation/reaction area bago ang trendline break.',
         'I-adjust ang taas ng box para ma-cover ang buong reaction area, hindi lang single wick.',
-      ],
-      imageCaptions: [
-        'Screenshot slot: Rectangle zone box sa paligid ng consolidation area (long setup).',
-        'Screenshot slot: Rectangle zone box para sa short/reversal setup.',
       ],
     },
     invalidationTp: {
@@ -186,7 +165,6 @@ const taglish: SiteContent = {
         'I-draw ang take-profit zone (mungkahing kulay: teal/green) sa target area.',
       ],
       note: 'Mahalaga: ang lapad ng zone ay dapat base sa volatility/ATR ng symbol — hindi basta-basta lang o arbitrary.',
-      imageCaptions: ['Screenshot slot: Color-coded invalidation (red/pink) at take-profit (teal/green) zones.'],
     },
     weeklyOutlook: {
       stepNumber: '5',
@@ -208,9 +186,6 @@ const taglish: SiteContent = {
         'Kapag kumpleto na, gamitin ang camera/snapshot icon sa toolbar para i-save o i-share ang outlook chart mo.',
       ],
       note: 'Ito ay presentation lang ng parehong zones at bias na na-draw mo na sa mga naunang steps — hindi ito bagong technique.',
-      imageCaptions: [
-        'Screenshot slot: Kumpletong weekly outlook chart na may supply/demand zones, bias label, at scenario arrows.',
-      ],
     },
   },
   examples: {
@@ -226,7 +201,6 @@ const taglish: SiteContent = {
           susunod na structure level.
         </>
       ),
-      imageCaption: 'Screenshot slot: Long setup — trendline break, entry zone, invalidation below, target above.',
     },
     short: {
       label: 'Supply Zone Reaction',
@@ -237,7 +211,6 @@ const taglish: SiteContent = {
           nakaraang structure.
         </>
       ),
-      imageCaption: 'Screenshot slot: Short/reversal setup — supply zone reaction, invalidation above, target below.',
     },
   },
   risk: {
@@ -267,19 +240,6 @@ const taglish: SiteContent = {
   },
   footer: 'Educational content only. Not financial advice. Trade at your own risk.',
   sampleDiagramLabel: 'Halimbawang diagram — hindi actual chart',
-  imagePlaceholder: {
-    prompt: 'I-drag o i-click para mag-upload ng screenshot mo',
-    removeLabel: 'Alisin',
-    unsupportedFileError: 'File na ito ay hindi image. Mag-upload ng PNG, JPG, o WebP.',
-    processError: 'Hindi na-process ang image. Subukan ulit ng ibang file.',
-    quotaWarning: 'Na-preview ang image pero hindi na-save locally (storage full). Mawawala ito pag nag-refresh.',
-    checkButtonLabel: 'I-check ang Screenshot',
-    checkingLabel: 'Chinecheck...',
-    checkOk: 'Mukhang okay ang screenshot mo — malinaw at may laman.',
-    checkTooSmall: 'Mababa ang resolution ng image (masyadong maliit) — baka mahirap basahin. Subukan mag-upload ng mas malinaw/mas malaking screenshot.',
-    checkLikelyBlank: 'Mukhang halos blangko o solid color lang ang image — siguraduhing kompleto ang na-capture mong chart.',
-    checkFailed: 'Hindi na-check ang image. Subukan ulit.',
-  },
 }
 
 const english: SiteContent = {
@@ -325,7 +285,6 @@ const english: SiteContent = {
         'Add it to the chart.',
         'Adjust the period settings if you want to tweak sensitivity.',
       ],
-      imageCaptions: ['Screenshot slot: Indicators search dialog showing the Fractals result.'],
     },
     trendline: {
       stepNumber: '2',
@@ -343,7 +302,6 @@ const english: SiteContent = {
         'Watch for a candle close that crosses through the line — that\'s the potential break.',
       ],
       note: "Note: a break alone isn't enough confirmation — pair it with the zone (next section).",
-      imageCaptions: ['Screenshot slot: Trendline drawn using the fractal swing points.'],
     },
     entryZone: {
       stepNumber: '3',
@@ -359,10 +317,6 @@ const english: SiteContent = {
         'Select the Rectangle tool from the drawing toolbar.',
         'Draw the box around the consolidation/reaction area before the trendline break.',
         'Adjust the height of the box to cover the whole reaction area, not just a single wick.',
-      ],
-      imageCaptions: [
-        'Screenshot slot: Rectangle zone box around the consolidation area (long setup).',
-        'Screenshot slot: Rectangle zone box for a short/reversal setup.',
       ],
     },
     invalidationTp: {
@@ -381,7 +335,6 @@ const english: SiteContent = {
         'Draw the take-profit zone (suggested color: teal/green) at the target area.',
       ],
       note: "Important: zone width should be based on the symbol's volatility/ATR — not arbitrary.",
-      imageCaptions: ['Screenshot slot: Color-coded invalidation (red/pink) and take-profit (teal/green) zones.'],
     },
     weeklyOutlook: {
       stepNumber: '5',
@@ -403,9 +356,6 @@ const english: SiteContent = {
         'Once it\'s complete, use the camera/snapshot icon in the toolbar to save or share your outlook chart.',
       ],
       note: "This is just a presentation of the same zones and bias you already drew in the earlier steps — it isn't a new technique.",
-      imageCaptions: [
-        'Screenshot slot: Completed weekly outlook chart with supply/demand zones, bias label, and scenario arrows.',
-      ],
     },
   },
   examples: {
@@ -421,7 +371,6 @@ const english: SiteContent = {
           the next structure level.
         </>
       ),
-      imageCaption: 'Screenshot slot: Long setup — trendline break, entry zone, invalidation below, target above.',
     },
     short: {
       label: 'Supply Zone Reaction',
@@ -432,7 +381,6 @@ const english: SiteContent = {
           based on prior structure.
         </>
       ),
-      imageCaption: 'Screenshot slot: Short/reversal setup — supply zone reaction, invalidation above, target below.',
     },
   },
   risk: {
@@ -461,19 +409,6 @@ const english: SiteContent = {
   },
   footer: 'Educational content only. Not financial advice. Trade at your own risk.',
   sampleDiagramLabel: 'Sample diagram — not an actual chart',
-  imagePlaceholder: {
-    prompt: 'Drag or click to upload your screenshot',
-    removeLabel: 'Remove',
-    unsupportedFileError: "That file isn't an image. Please upload a PNG, JPG, or WebP.",
-    processError: "Couldn't process that image. Try a different file.",
-    quotaWarning: 'Image previewed but could not be saved locally (storage full). It will be lost on refresh.',
-    checkButtonLabel: 'Check Screenshot',
-    checkingLabel: 'Checking...',
-    checkOk: 'Your screenshot looks good — clear and not empty.',
-    checkTooSmall: "This image's resolution is low (too small) — it may be hard to read. Try uploading a clearer or larger screenshot.",
-    checkLikelyBlank: 'This image looks almost blank or a single solid color — make sure the full chart was captured.',
-    checkFailed: "Couldn't check that image. Try again.",
-  },
 }
 
 const dictionaries: Record<Language, SiteContent> = { taglish, english }

@@ -2,7 +2,6 @@ import { useState } from 'react'
 import HeroBanner from './components/HeroBanner'
 import ChartPanel from './components/ChartPanel'
 import StepSection from './components/StepSection'
-import TutorialImage from './components/TutorialImage'
 import ExampleWalkthrough from './components/ExampleWalkthrough'
 import RiskManagementSection from './components/RiskManagementSection'
 import Sidebar from './components/Sidebar'
@@ -41,26 +40,15 @@ function App() {
 
         <ChartPanel />
 
-        <StepSection id="step-fractals" stepKey="fractals">
-          <TutorialImage id="fractals-indicator" caption={getContent(language).steps.fractals.imageCaptions[0]} />
-        </StepSection>
+        <StepSection id="step-fractals" stepKey="fractals" />
 
-        <StepSection id="step-trendline" stepKey="trendline">
-          <TutorialImage id="trendline-break" caption={getContent(language).steps.trendline.imageCaptions[0]} />
-        </StepSection>
+        <StepSection id="step-trendline" stepKey="trendline" />
 
-        <StepSection id="step-entry-zone" stepKey="entryZone">
-          <TutorialImage id="entry-zone-long" caption={getContent(language).steps.entryZone.imageCaptions[0]} />
-          <TutorialImage id="entry-zone-short" caption={getContent(language).steps.entryZone.imageCaptions[1]} />
-        </StepSection>
+        <StepSection id="step-entry-zone" stepKey="entryZone" />
 
-        <StepSection id="step-invalidation-tp" stepKey="invalidationTp">
-          <TutorialImage id="invalidation-tp" caption={getContent(language).steps.invalidationTp.imageCaptions[0]} />
-        </StepSection>
+        <StepSection id="step-invalidation-tp" stepKey="invalidationTp" />
 
-        <StepSection id="step-weekly-outlook" stepKey="weeklyOutlook">
-          <TutorialImage id="weekly-outlook-setup" caption={getContent(language).steps.weeklyOutlook.imageCaptions[0]} />
-        </StepSection>
+        <StepSection id="step-weekly-outlook" stepKey="weeklyOutlook" />
 
         <section id="worked-examples" className="scroll-mt-24 border-b border-tv-border px-4 py-10 sm:px-8">
           <div className="mx-auto max-w-5xl">
@@ -78,8 +66,8 @@ function App() {
             </div>
 
             <div className="mt-6 grid gap-5 sm:grid-cols-2">
-              <ExampleWalkthrough id="example-long" variant="long" />
-              <ExampleWalkthrough id="example-short" variant="short" />
+              <ExampleWalkthrough variant="long" />
+              <ExampleWalkthrough variant="short" />
             </div>
           </div>
         </section>
