@@ -61,11 +61,6 @@ export interface SiteContent {
   }
   footer: string
   sampleDiagramLabel: string
-  curriculum: {
-    heading: string
-    description: string
-    note: string
-  }
   imagePlaceholder: {
     prompt: string
     removeLabel: string
@@ -83,7 +78,6 @@ export interface SiteContent {
 
 const taglish: SiteContent = {
   nav: [
-    { id: 'curriculum', label: 'Curriculum' },
     { id: 'live-chart', label: 'Chart' },
     { id: 'step-fractals', label: '1. Fractals' },
     { id: 'step-trendline', label: '2. Trendline' },
@@ -273,11 +267,6 @@ const taglish: SiteContent = {
   },
   footer: 'Educational content only. Not financial advice. Trade at your own risk.',
   sampleDiagramLabel: 'Halimbawang diagram — hindi actual chart',
-  curriculum: {
-    heading: 'Course Curriculum',
-    description: 'Buong roadmap ng course, hati sa apat na linggo. Ang mga naka-check ay ang mga module na dapat mo nang natapos bago pumunta sa Zone Trading tutorial sa taas.',
-    note: 'Outline lang ito ng buong course — ang Zone Trading section sa taas ng page ang detalyadong walkthrough.',
-  },
   imagePlaceholder: {
     prompt: 'I-drag o i-click para mag-upload ng screenshot mo',
     removeLabel: 'Alisin',
@@ -472,11 +461,6 @@ const english: SiteContent = {
   },
   footer: 'Educational content only. Not financial advice. Trade at your own risk.',
   sampleDiagramLabel: 'Sample diagram — not an actual chart',
-  curriculum: {
-    heading: 'Course Curriculum',
-    description: 'The full course roadmap, split across four weeks. Checked items are modules you should complete before the Zone Trading tutorial above.',
-    note: 'This is an outline of the full course — the Zone Trading section above is the detailed walkthrough.',
-  },
   imagePlaceholder: {
     prompt: 'Drag or click to upload your screenshot',
     removeLabel: 'Remove',
