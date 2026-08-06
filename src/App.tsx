@@ -14,7 +14,9 @@ import { getContent } from './i18n/content'
 function App() {
   const { language } = useSettings()
   const { examples } = getContent(language)
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(min-width: 1024px)').matches,
+  )
 
   return (
     <div className="min-h-screen bg-tv-bg lg:flex">
@@ -24,9 +26,9 @@ function App() {
         <nav className="sticky top-0 z-10 flex items-center gap-2 border-b border-tv-border bg-tv-bg/95 px-4 py-2 backdrop-blur sm:px-8">
           <button
             type="button"
-            onClick={() => setSidebarOpen(true)}
-            aria-label="Open menu"
-            className="rounded p-2 text-fg-muted hover:bg-tv-panel hover:text-tv-teal lg:hidden"
+            onClick={() => setSidebarOpen((o) => !o)}
+            aria-label={sidebarOpen ? 'Hide sidebar' : 'Show sidebar'}
+            className="rounded p-2 text-fg-muted hover:bg-tv-panel hover:text-tv-teal"
           >
             ☰
           </button>
