@@ -60,6 +60,7 @@ export interface SiteContent {
     closingDisclaimer: string
   }
   footer: string
+  sampleDiagramLabel: string
   imagePlaceholder: {
     prompt: string
     removeLabel: string
@@ -265,6 +266,7 @@ const taglish: SiteContent = {
       'Hindi ito financial advice. Ang trading ay may kalakip na risk of loss. Ang anumang halimbawa ng percentage gain na naipakita sa site na ito ay hindi indikasyon ng future results.',
   },
   footer: 'Educational content only. Not financial advice. Trade at your own risk.',
+  sampleDiagramLabel: 'Halimbawang diagram — hindi actual chart',
   imagePlaceholder: {
     prompt: 'I-drag o i-click para mag-upload ng screenshot mo',
     removeLabel: 'Alisin',
@@ -458,6 +460,7 @@ const english: SiteContent = {
       'This is not financial advice. Trading carries risk of loss. Any example percentage gain shown on this site is not an indication of future results.',
   },
   footer: 'Educational content only. Not financial advice. Trade at your own risk.',
+  sampleDiagramLabel: 'Sample diagram — not an actual chart',
   imagePlaceholder: {
     prompt: 'Drag or click to upload your screenshot',
     removeLabel: 'Remove',

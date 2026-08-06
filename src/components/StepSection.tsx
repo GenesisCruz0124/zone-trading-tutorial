@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { useSettings } from '../context/SettingsContext'
 import { getContent } from '../i18n/content'
+import StepDiagram from './StepDiagram'
 
 type StepKey = 'fractals' | 'trendline' | 'entryZone' | 'invalidationTp' | 'weeklyOutlook'
 
@@ -50,6 +51,8 @@ export default function StepSection({ id, stepKey, children }: StepSectionProps)
             ))}
           </ol>
         )}
+
+        <StepDiagram stepKey={stepKey} />
 
         {children}
 
