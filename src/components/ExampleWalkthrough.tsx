@@ -1,5 +1,6 @@
 import { useSettings } from '../context/SettingsContext'
 import { getContent } from '../i18n/content'
+import ExampleDiagram from './ExampleDiagram'
 
 interface ExampleWalkthroughProps {
   variant: 'long' | 'short'
@@ -25,6 +26,7 @@ export default function ExampleWalkthrough({ variant }: ExampleWalkthroughProps)
       </div>
       <div className="mt-3 text-sm leading-relaxed text-fg-muted">{example.description}</div>
       <p className="mt-3 text-xs italic text-fg-subtle">{examples.disclaimerNote}</p>
+      <ExampleDiagram variant={variant} />
     </div>
   )
 }
