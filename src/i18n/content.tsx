@@ -66,6 +66,12 @@ export interface SiteContent {
     unsupportedFileError: string
     processError: string
     quotaWarning: string
+    checkButtonLabel: string
+    checkingLabel: string
+    checkOk: string
+    checkTooSmall: string
+    checkLikelyBlank: string
+    checkFailed: string
   }
 }
 
@@ -265,6 +271,12 @@ const taglish: SiteContent = {
     unsupportedFileError: 'File na ito ay hindi image. Mag-upload ng PNG, JPG, o WebP.',
     processError: 'Hindi na-process ang image. Subukan ulit ng ibang file.',
     quotaWarning: 'Na-preview ang image pero hindi na-save locally (storage full). Mawawala ito pag nag-refresh.',
+    checkButtonLabel: 'I-check ang Screenshot',
+    checkingLabel: 'Chinecheck...',
+    checkOk: 'Mukhang okay ang screenshot mo — malinaw at may laman.',
+    checkTooSmall: 'Mababa ang resolution ng image (masyadong maliit) — baka mahirap basahin. Subukan mag-upload ng mas malinaw/mas malaking screenshot.',
+    checkLikelyBlank: 'Mukhang halos blangko o solid color lang ang image — siguraduhing kompleto ang na-capture mong chart.',
+    checkFailed: 'Hindi na-check ang image. Subukan ulit.',
   },
 }
 
@@ -452,6 +464,12 @@ const english: SiteContent = {
     unsupportedFileError: "That file isn't an image. Please upload a PNG, JPG, or WebP.",
     processError: "Couldn't process that image. Try a different file.",
     quotaWarning: 'Image previewed but could not be saved locally (storage full). It will be lost on refresh.',
+    checkButtonLabel: 'Check Screenshot',
+    checkingLabel: 'Checking...',
+    checkOk: 'Your screenshot looks good — clear and not empty.',
+    checkTooSmall: "This image's resolution is low (too small) — it may be hard to read. Try uploading a clearer or larger screenshot.",
+    checkLikelyBlank: 'This image looks almost blank or a single solid color — make sure the full chart was captured.',
+    checkFailed: "Couldn't check that image. Try again.",
   },
 }
 
